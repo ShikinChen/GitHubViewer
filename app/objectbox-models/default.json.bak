@@ -1,0 +1,66 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "3:4832647654999105933",
+      "lastPropertyId": "5:786559565099034831",
+      "name": "Repo",
+      "properties": [
+        {
+          "id": "1:3079384002419311435",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5399762754199681112",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:1194117356474072506",
+          "name": "language",
+          "type": 9
+        },
+        {
+          "id": "4:3075418702543312697",
+          "name": "createdAt",
+          "type": 9
+        },
+        {
+          "id": "5:786559565099034831",
+          "name": "page",
+          "type": 5,
+          "flags": 4
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:4832647654999105933",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    714543499034649411,
+    5243080752060415028
+  ],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    7299988798608535263,
+    4589166897573148655,
+    226753413386036662,
+    1381419909961904364,
+    7442698767665483872,
+    2553935023232238163,
+    1597171780836553795,
+    5153154597172786308,
+    5566146491336765346
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GitHubViewer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.GitHubViewer.NoActionBar">
+        <!--ActionBar 隐藏 下面两个一起使用-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--状态栏透明-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <!--全屏-->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+
+    <style name="Theme.GitHubViewer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.GitHubViewer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

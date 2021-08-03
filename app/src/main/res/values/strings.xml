@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GitHubViewer</string>
+
+    <string name="title_repos">Repos</string>
+    <string name="title_followers">Followers</string>
+
+    <string name="menu_repos">Repos</string>
+    <string name="menu_followers">Followers</string>
+
+    <string name="error">An error has occurred</string>
+    <string name="exit_info">Please click back again to exit</string>
+    <string name="cd_navigate_up">Navigate up</string>
+    <string name="no_connection">No connection established. Turn on the internet and repeat.</string>
+    <string name="no_connection_button">Repeat</string>
+</resources>
