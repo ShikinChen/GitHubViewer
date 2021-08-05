@@ -1,7 +1,5 @@
 package me.shiki.githubviewer.ui.home
 
-import androidx.annotation.StringRes
-import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -49,20 +47,22 @@ import me.shiki.githubviewer.vm.HomeViewModel
 @Composable
 fun TabsHome(viewModel: HomeViewModel, navigateToDetailsRepo: (Long) -> Unit) {
     val tabs = HomeTab.values()
-    val tabId by viewModel.selectedTab.collectAsState(0)
     val showSnackBar by LocalBaseViewModel.current.isShowSnackBar.collectAsState()
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
 
     Scaffold(topBar = {
-        Crossfade(HomeTab.getTabFromResource(tabId)) {
-            when (it) {
-                HomeTab.REPOS -> AppBar(title = stringResource(id = R.string.title_repos), isShowNavigationIcon = false)
-                HomeTab.FOLLOWERS -> AppBar(
-                    title = stringResource(id = R.string.title_followers),
-                    isShowNavigationIcon = false
-                )
-            }
+        when (currentDestination?.route ?: HomeTab.REPOS.route) {
+            HomeTab.REPOS.route -> AppBar(
+                title = stringResource(id = R.string.title_repos),
+                isShowNavigationIcon = false
+            )
+            HomeTab.FOLLOWERS.route -> AppBar(
+                title = stringResource(id = R.string.title_followers),
+                isShowNavigationIcon = false
+            )
         }
     }, bottomBar = {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -76,9 +76,6 @@ fun TabsHome(viewModel: HomeViewModel, navigateToDetailsRepo: (Long) -> Unit) {
                             56.dp
                         )
                 ) {
-                    val navBackStackEntry by navController.currentBackStackEntryAsState()
-                    val currentDestination = navBackStackEntry?.destination
-
                     tabs.forEach { tab ->
                         BottomNavigationItem(
                             icon = { Icon(imageVector = tab.icon, contentDescription = null) },
@@ -117,19 +114,9 @@ fun TabsHome(viewModel: HomeViewModel, navigateToDetailsRepo: (Long) -> Unit) {
     }
 }
 
-enum class HomeTab(@StringRes val title: Int, val icon: ImageVector, val route: String) {
-    REPOS(R.string.menu_repos, Icons.Filled.List, NavScreen.ReposList.route),
-    FOLLOWERS(R.string.menu_followers, Icons.Filled.People, NavScreen.FollowersList.route);
-
-    companion object {
-        fun getTabFromResource(@StringRes resource: Int): HomeTab {
-            return when (resource) {
-                R.string.menu_repos -> REPOS
-                R.string.menu_followers -> FOLLOWERS
-                else -> REPOS
-            }
-        }
-    }
+enum class HomeTab(val icon: ImageVector, val route: String) {
+    REPOS(Icons.Filled.List, NavScreen.ReposList.route),
+    FOLLOWERS(Icons.Filled.People, NavScreen.FollowersList.route);
 }
 
 @Composable

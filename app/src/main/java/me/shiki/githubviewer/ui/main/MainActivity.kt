@@ -15,6 +15,7 @@ import me.shiki.githubviewer.ui.BaseActivity
 import me.shiki.githubviewer.ui.theme.GitHubViewerTheme
 import me.shiki.githubviewer.vm.MainViewModel
 import javax.inject.Inject
+import kotlin.time.ExperimentalTime
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -26,6 +27,7 @@ class MainActivity : BaseActivity() {
 
     override lateinit var navController: NavHostController
 
+    @ExperimentalTime
     @ExperimentalPagingApi
     @Composable
     override fun content() {

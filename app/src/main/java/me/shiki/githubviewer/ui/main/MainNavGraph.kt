@@ -12,6 +12,7 @@ import androidx.paging.ExperimentalPagingApi
 import com.google.accompanist.insets.ProvideWindowInsets
 import me.shiki.githubviewer.ui.home.RepoDetails
 import me.shiki.githubviewer.ui.home.StartApp
+import kotlin.time.ExperimentalTime
 
 /**
  *
@@ -19,6 +20,7 @@ import me.shiki.githubviewer.ui.home.StartApp
  * @date 2021/7/30
  *
  */
+@ExperimentalTime
 @ExperimentalPagingApi
 @Composable
 fun MainNavGraph(navController: NavHostController) {

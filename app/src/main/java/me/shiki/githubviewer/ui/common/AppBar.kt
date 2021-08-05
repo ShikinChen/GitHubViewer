@@ -22,6 +22,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.insets.navigationBarsHeight
+import com.google.accompanist.insets.statusBarsHeight
+import com.google.accompanist.insets.statusBarsPadding
 import com.gyf.immersionbar.ImmersionBar
 import me.shiki.githubviewer.R
 import me.shiki.githubviewer.ext.px2dp
@@ -37,12 +39,14 @@ import me.shiki.githubviewer.ui.theme.Purple700
  */
 @Composable
 fun AppBar(title: String, isShowNavigationIcon: Boolean = true) {
-    val context = LocalContext.current
-    val statusBarHeight = ImmersionBar.getStatusBarHeight(context as Activity).px2dp()
+    val activity = LocalContext.current as Activity
+    val statusBarHeight = ImmersionBar.getStatusBarHeight(activity).px2dp()
+    val actionBarHeight = ImmersionBar.getActionBarHeight(activity).px2dp()
+
     TopAppBar(
         title = {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Spacer(modifier = Modifier.height(statusBarHeight.dp))
+                Spacer(modifier = Modifier.statusBarsHeight())
                 Text(
                     title,
                     Modifier
@@ -54,14 +58,14 @@ fun AppBar(title: String, isShowNavigationIcon: Boolean = true) {
         elevation = 6.dp,
         backgroundColor = Purple700,
         modifier = Modifier
-            .navigationBarsHeight((58 + statusBarHeight).dp),
+            .navigationBarsHeight((actionBarHeight + statusBarHeight).dp),
         navigationIcon = if (isShowNavigationIcon) {
             {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Spacer(modifier = Modifier.height(statusBarHeight.dp))
+                    Spacer(modifier = Modifier.statusBarsHeight())
                     IconButton(onClick = {
-                        if (context is BaseActivity) {
-                            context.navController.navigateUp()
+                        if (activity is BaseActivity) {
+                            activity.navController.navigateUp()
                         }
                     }) {
                         Icon(

@@ -47,7 +47,6 @@ fun <T : Any> CommonList(
             },
             modifier = modifier
                 .fillMaxSize()
-                .statusBarsPadding()
                 .background(MaterialTheme.colors.background)
         ) {
             LazyColumn(
