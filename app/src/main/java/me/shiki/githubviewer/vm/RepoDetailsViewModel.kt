@@ -44,7 +44,6 @@ class RepoDetailsViewModel @ExperimentalPagingApi
     private val mmkv: MMKV,
     private val repositoryUser: RepositoryUser,
     private val remoteMediatorRepo: RemoteMediatorRepo,
-    private val followerPageSource: FollowerPageSource,
     private val repoDao: RepoDao
 ) :
     ViewModel() {

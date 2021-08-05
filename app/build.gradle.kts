@@ -65,6 +65,7 @@ dependencies {
         implementation(ktxCore)
         implementation(material)
         implementation(startup)
+        implementation(browser)
     }
     dep.compose.apply {
         implementation(ui)

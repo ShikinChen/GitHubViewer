@@ -21,6 +21,7 @@ object Versions {
     const val material = "1.4.0"
     const val startup = "1.0.0"
     const val navigation = "2.4.0-alpha03"
+    const val browser = "1.3.0"
 
     // hilt
     const val hilt = "1.0.0"
@@ -57,4 +58,7 @@ object Versions {
 
     //https://github.com/Kotlin/kotlinx.serialization
     const val serialization = "1.2.2"
+
+    //https://github.com/coil-kt/coil
+    const val coil = "1.3.1"
 }

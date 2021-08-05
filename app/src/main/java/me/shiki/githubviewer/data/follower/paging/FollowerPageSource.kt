@@ -14,8 +14,7 @@ import javax.inject.Inject
  * @date 2021/8/2
  *
  */
-@ViewModelScoped
-class FollowerPageSource @Inject constructor(private val followerRepository: FollowerRepository) :
+class FollowerPageSource(private val followerRepository: FollowerRepository) :
     PagingSource<Int, Follower>() {
     override fun getRefreshKey(state: PagingState<Int, Follower>): Int? {
         return state.anchorPosition?.let {

@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.onEach
 import me.shiki.githubviewer.base.Consts
 import me.shiki.githubviewer.base.ResponseResult
 import me.shiki.githubviewer.dao.RepoDao
+import me.shiki.githubviewer.data.follower.impl.FollowerRepository
 import me.shiki.githubviewer.data.follower.paging.FollowerPageSource
 import me.shiki.githubviewer.data.repos.paging.RemoteMediatorRepo
 import me.shiki.githubviewer.data.user.impl.RepositoryUser
@@ -44,7 +45,7 @@ class HomeViewModel @ExperimentalPagingApi
     private val mmkv: MMKV,
     private val repositoryUser: RepositoryUser,
     private val remoteMediatorRepo: RemoteMediatorRepo,
-    private val followerPageSource: FollowerPageSource,
+    private val followerRepository: FollowerRepository,
     private val repoDao: RepoDao
 ) :
     ViewModel() {
@@ -64,7 +65,7 @@ class HomeViewModel @ExperimentalPagingApi
     }.flow.cachedIn(viewModelScope)
 
     val followers: Flow<PagingData<Follower>> = Pager(PagingConfig(pageSize = Consts.PER_PAGE)) {
-        followerPageSource
+        FollowerPageSource(followerRepository)
     }.flow.cachedIn(viewModelScope)
 
     private val _loadingUser: MutableStateFlow<ResponseResult<User>?> by lazy {

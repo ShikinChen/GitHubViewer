@@ -19,4 +19,6 @@ object Androidx {
 
     const val navigationSafeArgsGradlePlugin =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+
+    const val browser = "androidx.browser:browser:${Versions.browser}"
 }

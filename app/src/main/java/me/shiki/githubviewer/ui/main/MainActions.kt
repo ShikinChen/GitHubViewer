@@ -1,6 +1,5 @@
 package me.shiki.githubviewer.ui.main
 
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
 /**
