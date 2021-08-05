@@ -39,7 +39,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 @ExperimentalCoroutinesApi
-class HomeViewModel @ExperimentalPagingApi
+class RepoDetailsViewModel @ExperimentalPagingApi
 @Inject constructor(
     private val mmkv: MMKV,
     private val repositoryUser: RepositoryUser,
@@ -48,47 +48,4 @@ class HomeViewModel @ExperimentalPagingApi
     private val repoDao: RepoDao
 ) :
     ViewModel() {
-    init {
-        Timber.d("HomeViewModel")
-    }
-
-    private val _selectedTab = MutableStateFlow(0)
-    val selectedTab = _selectedTab.asStateFlow()
-
-    @ExperimentalPagingApi
-    val repos: Flow<PagingData<Repo>> = Pager(
-        config = PagingConfig(pageSize = Consts.PER_PAGE),
-        remoteMediator = remoteMediatorRepo,
-    ) {
-        repoDao.createPagingSource()
-    }.flow.cachedIn(viewModelScope)
-
-    val followers: Flow<PagingData<Follower>> = Pager(PagingConfig(pageSize = Consts.PER_PAGE)) {
-        followerPageSource
-    }.flow.cachedIn(viewModelScope)
-
-    private val _loadingUser: MutableStateFlow<ResponseResult<User>?> by lazy {
-        MutableStateFlow(null)
-    }
-
-    val loadingUser = _loadingUser.asStateFlow()
-
-    init {
-        repeatLoadingUser()
-    }
-
-    fun repeatLoadingUser() {
-        _loadingUser.value = null
-        repositoryUser.loadingUser().onEach {
-            it.success {
-                mmkv.putUser(it)
-            }
-            _loadingUser.value = it
-        }.launchIn(viewModelScope)
-    }
-
-    @MainThread
-    fun selectTab(@StringRes tab: Int) {
-        _selectedTab.value = tab
-    }
 }

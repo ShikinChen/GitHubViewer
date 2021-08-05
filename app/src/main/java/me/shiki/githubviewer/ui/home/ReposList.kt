@@ -20,8 +20,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
@@ -32,6 +34,7 @@ import me.shiki.githubviewer.model.Repo
 import me.shiki.githubviewer.ui.common.CommonList
 import me.shiki.githubviewer.ui.common.LanguageImage
 import me.shiki.githubviewer.ui.theme.GitHubViewerTheme
+import me.shiki.githubviewer.vm.HomeViewModel
 import java.time.format.DateTimeFormatter
 
 /**
@@ -40,13 +43,15 @@ import java.time.format.DateTimeFormatter
  * @date 2021/8/2
  *
  */
+@ExperimentalPagingApi
 @Composable
 fun ReposList(
     modifier: Modifier = Modifier,
-    models: LazyPagingItems<Repo>,
+    viewModel: HomeViewModel,
     navigateToDetailsRepo: (Long) -> Unit
 ) {
-    CommonList(modifier, models, rememberSwipeRefreshState(models.loadState.refresh is LoadState.Loading)) {
+    val lazyRespos: LazyPagingItems<Repo> = viewModel.repos.collectAsLazyPagingItems()
+    CommonList(modifier, lazyRespos, rememberSwipeRefreshState(lazyRespos.loadState.refresh is LoadState.Loading)) {
         ItemRepo(model = it, navigateToRepoView = navigateToDetailsRepo)
     }
 }

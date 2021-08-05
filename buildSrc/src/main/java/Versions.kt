@@ -20,6 +20,7 @@ object Versions {
     const val ktxCore = "1.5.0"
     const val material = "1.4.0"
     const val startup = "1.0.0"
+    const val navigation = "2.4.0-alpha03"
 
     // hilt
     const val hilt = "1.0.0"

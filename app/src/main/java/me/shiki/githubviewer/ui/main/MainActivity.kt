@@ -9,7 +9,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.paging.ExperimentalPagingApi
 import dagger.hilt.android.AndroidEntryPoint
 import me.shiki.githubviewer.base.LocalBaseViewModel
-import me.shiki.githubviewer.di.StatusBarHeight
 import me.shiki.githubviewer.ui.BaseActivity
 import me.shiki.githubviewer.ui.theme.GitHubViewerTheme
 import me.shiki.githubviewer.vm.MainViewModel
@@ -19,10 +18,7 @@ class MainActivity : BaseActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    private lateinit var navController: NavHostController
-
-    @StatusBarHeight
-    var statusBarHeight: Int=0
+    override lateinit var navController: NavHostController
 
     @ExperimentalPagingApi
     @Composable

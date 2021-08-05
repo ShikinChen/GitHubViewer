@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +33,9 @@ abstract class BaseActivity : ComponentActivity() {
     }
 
     @Composable
-    abstract fun content()
+    protected abstract fun content()
+
+    abstract val navController: NavHostController
 
     private fun initImmersionBar() {
         ImmersionBar.with(this)

@@ -1,5 +1,6 @@
 package me.shiki.githubviewer.ui.main
 
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
 /**
@@ -9,9 +10,9 @@ import androidx.navigation.NavHostController
  *
  */
 class MainActions(navController: NavHostController) {
-    val navigateToDetailsRepo: (Long) -> Unit = { id ->
-        NavScreen.DetailsRepo.apply {
-            navController.navigate(routeWithArgument.replace("{$argument0}", id.toString()))
+    val navigateToRepoDetails: (Long) -> Unit = { id ->
+        NavScreen.RepoDetails.apply {
+            navController.navigate(routeWithArgument.replace("{$repoId}", id.toString()))
         }
     }
     val upPress: () -> Unit = {

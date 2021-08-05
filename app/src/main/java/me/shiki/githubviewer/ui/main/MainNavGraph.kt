@@ -1,7 +1,10 @@
 package me.shiki.githubviewer.ui.main
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -10,7 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.paging.ExperimentalPagingApi
 import com.google.accompanist.insets.ProvideWindowInsets
-import me.shiki.githubviewer.ui.home.DetailsRepo
+import me.shiki.githubviewer.ui.home.RepoDetails
+import me.shiki.githubviewer.ui.home.ReposList
 import me.shiki.githubviewer.ui.home.StartApp
 
 /**
@@ -28,17 +32,17 @@ fun MainNavGraph(navController: NavHostController) {
     ProvideWindowInsets {
         NavHost(navController = navController, startDestination = NavScreen.Home.route) {
             composable(NavScreen.Home.route) {
-                StartApp(viewModel = hiltViewModel(), navigateToDetailsRepo = actions.navigateToDetailsRepo)
+                StartApp(viewModel = hiltViewModel(), navigateToDetailsRepo = actions.navigateToRepoDetails)
             }
             composable(
-                route = NavScreen.DetailsRepo.routeWithArgument,
-                arguments = listOf(navArgument(NavScreen.DetailsRepo.argument0) {
+                route = NavScreen.RepoDetails.routeWithArgument,
+                arguments = listOf(navArgument(NavScreen.RepoDetails.repoId) {
                     type = NavType.LongType
                 })
-            ) {
+            ) { it ->
                 it.arguments?.let {
-                    DetailsRepo(
-                        repoId = it.getLong(NavScreen.DetailsRepo.argument0),
+                    RepoDetails(
+                        repoId = it.getLong(NavScreen.RepoDetails.repoId),
                         viewModel = hiltViewModel(),
                         upPress = actions.upPress
                     )

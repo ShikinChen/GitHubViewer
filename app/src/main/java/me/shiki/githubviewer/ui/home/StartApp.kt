@@ -1,6 +1,5 @@
 package me.shiki.githubviewer.ui.home
 
-import android.app.Activity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -11,7 +10,6 @@ import androidx.paging.ExperimentalPagingApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import me.shiki.githubviewer.ext.isError
 import me.shiki.githubviewer.ext.isSucceeded
-import me.shiki.githubviewer.ext.success
 import me.shiki.githubviewer.ui.common.ErrorConnect
 import me.shiki.githubviewer.vm.HomeViewModel
 
@@ -25,7 +23,7 @@ import me.shiki.githubviewer.vm.HomeViewModel
 @ExperimentalCoroutinesApi
 @Composable
 fun StartApp(viewModel: HomeViewModel, navigateToDetailsRepo: (Long) -> Unit) {
-    val user by viewModel.loadingUser.collectAsState(null)
+    val user by viewModel.loadingUser.collectAsState(viewModel.loadingUser.value)
     Box(Modifier.fillMaxSize()) {
         when {
             user.isSucceeded -> TabsHome(viewModel = viewModel, navigateToDetailsRepo = navigateToDetailsRepo)

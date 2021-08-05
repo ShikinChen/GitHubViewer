@@ -8,8 +8,11 @@ package me.shiki.githubviewer.ui.main
  */
 sealed class NavScreen(val route: String) {
     object Home : NavScreen("Home")
-    object DetailsRepo : NavScreen("DetailsRepo") {
-        const val routeWithArgument: String = "DetailsRepo/{repoId}"
-        const val argument0: String = "repoId"
+    object RepoDetails : NavScreen("RepoDetails") {
+        const val routeWithArgument: String = "RepoDetails/{repoId}"
+        const val repoId: String = "repoId"
     }
+
+    object ReposList : NavScreen("ReposList")
+    object FollowersList : NavScreen("FollowersList")
 }
