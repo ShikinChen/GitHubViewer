@@ -2,6 +2,7 @@ package me.shiki.githubviewer.di
 
 import android.content.Context
 import coil.ImageLoader
+import coil.util.CoilUtils
 import com.tencent.mmkv.MMKV
 import dagger.Module
 import dagger.Provides
@@ -29,8 +30,8 @@ object CommonModule {
 
     @Provides
     @Singleton
-    fun provideImageLoader(@ApplicationContext context: Context, okHttpClient: OkHttpClient): ImageLoader {
-        return ImageLoader.Builder(context).okHttpClient(okHttpClient)
+    fun provideImageLoader(@ApplicationContext context: Context, builder: OkHttpClient.Builder): ImageLoader {
+        return ImageLoader.Builder(context).okHttpClient(builder.cache(CoilUtils.createDefaultCache(context)).build())
             .crossfade(true)
             .build()
     }

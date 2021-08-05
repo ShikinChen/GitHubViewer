@@ -3,8 +3,6 @@ package me.shiki.githubviewer.data.follower
 import androidx.annotation.IntRange
 import me.shiki.githubviewer.base.Consts
 import me.shiki.githubviewer.data.follower.impl.ResponseFollower
-import me.shiki.githubviewer.data.repos.impl.ResponseRepo
-import me.shiki.githubviewer.model.Follower
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -24,7 +22,7 @@ interface FollowerService {
         @Query("per_page") @IntRange(
             from = 1,
             to = Consts.MAX_PAGE_SIZE.toLong()
-        ) perPage: Int = Consts.PER_PAGE,
+        ) perPage: Int = Consts.PAGE_SZIE,
         @Query("sort") sort: String = "created"
     ): Response<List<ResponseFollower>>
 }

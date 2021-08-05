@@ -10,4 +10,5 @@ object Accompanist {
     const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
     const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:${Versions.accompanist}"
     const val coil = "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
+    const val glide = "com.google.accompanist:accompanist-glide:${Versions.accompanist}"
 }

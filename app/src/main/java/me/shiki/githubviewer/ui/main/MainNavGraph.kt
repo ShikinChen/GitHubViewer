@@ -40,7 +40,6 @@ fun MainNavGraph(navController: NavHostController) {
                     RepoDetails(
                         repoId = it.getLong(NavScreen.RepoDetails.repoId),
                         viewModel = hiltViewModel(),
-                        upPress = actions.upPress
                     )
                 }
             }

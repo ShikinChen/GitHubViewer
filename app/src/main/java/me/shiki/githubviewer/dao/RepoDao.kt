@@ -29,8 +29,8 @@ class RepoDao @Inject constructor(private val box: Box<Repo>) {
         return box.query().orderDesc(Repo_.createdAt).build()
     }
 
-    fun pagingSource(offset: Int, pageSize: Int): List<Repo> {
-        return findQuery().find(offset.toLong(), pageSize.toLong())
+    fun findById(repoId: Long): Repo? {
+        return box.query().equal(Repo_.repoId, repoId).build().findFirst()
     }
 
     fun clearAll() {

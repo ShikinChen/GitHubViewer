@@ -67,7 +67,7 @@ fun ItemRepo(
             .fillMaxWidth()
             .padding(4.dp)
             .clickable {
-                navigateToRepoView(model.id)
+                navigateToRepoView(model.repoId)
             }, elevation = 8.dp, shape = RoundedCornerShape(8.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(8.dp)) {

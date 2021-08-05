@@ -20,9 +20,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClientBuilder(): OkHttpClient.Builder {
         return OkHttpClient.Builder()
             .addInterceptor(
                 AndroidLoggingInterceptor.build(isDebug = BuildConfig.DEBUG, hideVerticalLine = true)
@@ -36,7 +37,12 @@ object NetworkModule {
                     .build()
                 it.proceed(request)
             }
-            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(builder: OkHttpClient.Builder): OkHttpClient {
+        return builder.build()
     }
 
     @Provides

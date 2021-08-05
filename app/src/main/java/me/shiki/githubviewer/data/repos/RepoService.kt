@@ -22,7 +22,7 @@ interface RepoService {
         @Query("per_page") @IntRange(
             from = 1,
             to = Consts.MAX_PAGE_SIZE.toLong()
-        ) perPage: Int = Consts.PER_PAGE,
+        ) perPage: Int = Consts.PAGE_SZIE,
         @Query("sort") sort: String = "created"
     ): Response<List<ResponseRepo>>
 }

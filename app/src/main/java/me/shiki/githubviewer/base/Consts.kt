@@ -10,7 +10,7 @@ class Consts private constructor() {
 
         const val MAX_PAGE_SIZE = 100
 
-        const val PER_PAGE = 10
+        const val PAGE_SZIE = 10
 
         const val LAST_UPDATE_REPOS = "LAST_UPDATE_REPOS_"
     }
